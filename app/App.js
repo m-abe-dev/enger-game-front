@@ -130,7 +130,7 @@ function GameScreen() {
 function GuildScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Guild!</Text>
+      <Text>Guild!!</Text>
     </View>
   );
 }
