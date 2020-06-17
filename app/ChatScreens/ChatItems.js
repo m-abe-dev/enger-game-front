@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Listitem = ({ imageUrl, title, author, onPress }) => {
+const ChatItems = ({ imageUrl, title, author, onPress }) => {
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
@@ -47,4 +47,4 @@ const Listitem = ({ imageUrl, title, author, onPress }) => {
   );
 };
 
-export default Listitem;
+export default ChatItems;

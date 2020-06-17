@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { FlatList } from "react-native-gesture-handler";
-import Listitem from "./Listitem";
+import ChatItems from "./ChatItems";
 import articles from "../dummies/articles.json";
 
 const Stack = createStackNavigator();
@@ -17,7 +17,7 @@ export default ChatScreen = (props) => {
   const { navigation } = props;
   const items = articles.map((articles, index) => {
     return (
-      <Listitem
+      <ChatItems
         imageUrl={articles.urlToImage}
         title={articles.title}
         author={articles.author}
@@ -30,7 +30,7 @@ export default ChatScreen = (props) => {
       <FlatList
         data={articles}
         renderItem={({ item }) => (
-          <Listitem
+          <ChatItems
             imageUrl={item.urlToImage}
             title={item.title}
             author={item.author}

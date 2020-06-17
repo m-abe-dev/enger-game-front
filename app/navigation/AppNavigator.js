@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import axios from "axios";
 import ItemsList from "../components/ItemsList";
 import Chats from "../components/Chats.js";
 import SearchBar from "../components/SearchBar";

@@ -1,5 +1,5 @@
 import React from "react";
-import { GiftedChat, Bubble, Send } from "react-native-gifted-chat";
+import { GiftedChat } from "react-native-gifted-chat";
 
 export default class Messages extends React.Component {
   componentWillMount() {
