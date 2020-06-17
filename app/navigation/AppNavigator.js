@@ -1,18 +1,23 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import axios from "axios";
 import ItemsList from "../components/ItemsList";
 import Chats from "../components/Chats.js";
-import SearchBar from "../components/SearchBar";
+import { SearchBar } from "react-native-elements";
 
 function ItemScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <ItemsList />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ height: 26 }}>
+        <SearchBar />
+      </View>
+      <View style={{ flex: 1 }}>
+        <ItemsList />
+      </View>
+    </SafeAreaView>
   );
 }
 
