@@ -8,6 +8,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
+import { SearchBar } from "react-native-elements";
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +49,10 @@ class ItemsList extends PureComponent {
       items: [],
     };
   }
+
+  renderHeader = () => {
+    return <SearchBar placeholder="Type Here..." lightTheme round />;
+  };
 
   componentDidMount() {
     this.getDataFromAPI();
