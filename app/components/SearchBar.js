@@ -45,8 +45,7 @@ export default class SearchBar extends Component {
       <SafeAreaView style={{ flex: 1 }}>
         <View
           style={{
-            height: 80,
-            backgroundColor: "#2489E5",
+            height: 60,
             justifyContent: "center",
             paddingHorizontal: 5,
           }}

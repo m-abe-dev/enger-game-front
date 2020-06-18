@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import axios from "axios";
 import ItemsList from "../components/ItemsList";
 import Chats from "../components/Chats.js";
-import { SearchBar } from "react-native-elements";
+import SearchBar from "/Users/m_abe/Desktop/Demo/app/components/SearchBar.js";
 
 function ItemScreen() {
   return (
