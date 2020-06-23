@@ -1,93 +1,73 @@
-import React, { PureComponent } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, FlatList, SafeAreaView } from "react-native";
+import Items from "/Users/m_abe/Desktop/Demo/app/components/Items.js";
+import { createStackNavigator } from "@react-navigation/stack";
+import axios from "axios";
+
+// ----- 案件一覧 ----- //
+
+const Stack = createStackNavigator();
+
+const URL = `http://newsapi.org/v2/top-headlines?country=jp&apiKey=7fd14728bc70467d9969c22564ddd41b`;
+const ItemsList = (props) => {
+  const { navigation } = props;
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+  const fetchArticles = async () => {
+    try {
+      const response = await axios.get(URL);
+      setArticles(response.data.articles);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={articles}
+        renderItem={({ item }) => (
+          <Items
+            imgUrl={item.urlToImage}
+            title={item.title}
+            author={item.author}
+            onPress={() => navigation.navigate("DetailScreen")}
+          />
+        )}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default ItemsList;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
-  },
-  cardText: {
-    fontSize: 30,
-  },
-  card: {
     backgroundColor: "#fff",
-    marginBottom: 10,
-    marginLeft: "5%",
-    width: "90%",
-    shadowColor: "#000",
-    shadowOpacity: 1,
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
   },
-  cardImage: {
+  ItemContainer: {
+    height: 100,
     width: "100%",
-    height: 200,
-    resizeMode: "cover",
+    borderColor: "gray",
+    borderWidth: 1,
+    flexDirection: "row",
   },
-  loader: {
+  LeftContainer: {
+    width: 100,
+  },
+  RightContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 10,
+    justifyContent: "space-between",
+  },
+  Text: {
+    fontSize: 16,
+  },
+  Subtext: {
+    fontSize: 12,
+    color: "gray",
   },
 });
-
-class ItemsList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
-
-  componentDidMount() {
-    this.getDataFromAPI();
-  }
-
-  getDataFromAPI = async () => {
-    const endpoint = "https://jsonplaceholder.typicode.com/photos?_limit=20";
-    const res = await fetch(endpoint);
-    const data = await res.json();
-    this.setState({ items: data });
-  };
-
-  _renderItem = ({ item, index }) => {
-    let { cardText, card, cardImage } = styles;
-    return (
-      <TouchableOpacity style={card}>
-        <Image style={cardImage} source={{ uri: item.url }} />
-        <Text style={cardText}>{item.title}</Text>
-      </TouchableOpacity>
-    );
-  };
-  render() {
-    let { container, loader } = styles;
-    let { items } = this.state;
-    if (items.length === 0) {
-      return (
-        <View style={loader}>
-          <ActivityIndicator size="large" />
-        </View>
-      );
-    }
-    return (
-      <FlatList
-        style={container}
-        data={items}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={this._renderItem}
-      />
-    );
-  }
-}
-
-export default ItemsList;

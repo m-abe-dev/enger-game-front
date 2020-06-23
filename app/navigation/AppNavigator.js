@@ -3,19 +3,20 @@ import { Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import axios from "axios";
-import ItemsList from "../components/ItemsList";
-import Chats from "../components/Chats.js";
+import Chat from "../ChatScreens/Chat.js";
 import SearchBar from "/Users/m_abe/Desktop/Demo/app/components/SearchBar.js";
+import Item from "../components/Item.js";
+
+// スクリーン実装 //
 
 function ItemScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ height: 26 }}>
+      <View style={{ height: 65 }}>
         <SearchBar />
       </View>
       <View style={{ flex: 1 }}>
-        <ItemsList />
+        <Item />
       </View>
     </SafeAreaView>
   );
@@ -32,7 +33,7 @@ function SaveScreen() {
 function ChatScreen() {
   return (
     <View style={{ flex: 1 }}>
-      <Chats />
+      <Chat />
     </View>
   );
 }
@@ -52,6 +53,8 @@ function GuildScreen() {
     </View>
   );
 }
+
+// 下のタブナビゲーション機能 //
 
 const Tab = createBottomTabNavigator();
 

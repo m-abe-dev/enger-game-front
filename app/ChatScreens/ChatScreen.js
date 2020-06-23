@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
   },
 });
 
+// チャット画面構造 //
+
 export default ChatScreen = (props) => {
   const { navigation } = props;
   const items = articles.map((articles, index) => {

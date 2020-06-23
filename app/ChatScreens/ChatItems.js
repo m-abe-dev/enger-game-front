@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
   },
 });
 
+// チャット一覧画面レイアウト //
+
 const ChatItems = ({ imageUrl, title, author, onPress }) => {
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
