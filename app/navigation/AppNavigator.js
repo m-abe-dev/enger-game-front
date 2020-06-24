@@ -9,6 +9,8 @@ import Item from "../components/Item.js";
 
 // スクリーン実装 //
 
+// 案件一覧 //
+
 function ItemScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -22,6 +24,8 @@ function ItemScreen() {
   );
 }
 
+// お気に入り //
+
 function SaveScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -29,6 +33,8 @@ function SaveScreen() {
     </View>
   );
 }
+
+// チャット //
 
 function ChatScreen() {
   return (
@@ -38,6 +44,8 @@ function ChatScreen() {
   );
 }
 
+// ゲーム //
+
 function GameScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -45,6 +53,8 @@ function GameScreen() {
     </View>
   );
 }
+
+// プロフィール //
 
 function GuildScreen() {
   return (
@@ -62,6 +72,8 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
+        {/* 案件一覧タブナビゲーション */}
+
         <Tab.Screen
           name="Item"
           component={ItemScreen}
@@ -73,6 +85,8 @@ export default function AppNavigator() {
           }}
         />
 
+        {/* お気に入りタブナビゲーション */}
+
         <Tab.Screen
           name="Save"
           component={SaveScreen}
@@ -83,6 +97,9 @@ export default function AppNavigator() {
             ),
           }}
         />
+
+        {/* チャットタブナビゲーション */}
+
         <Tab.Screen
           name="Chat"
           component={ChatScreen}
@@ -93,6 +110,9 @@ export default function AppNavigator() {
             ),
           }}
         />
+
+        {/* ゲームタブナビゲーション */}
+
         <Tab.Screen
           name="Game"
           component={GameScreen}
@@ -103,6 +123,9 @@ export default function AppNavigator() {
             ),
           }}
         />
+
+        {/* プロフィールタブナビゲーション */}
+
         <Tab.Screen
           name="Guild"
           component={GuildScreen}
