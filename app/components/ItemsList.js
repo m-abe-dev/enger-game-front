@@ -32,7 +32,9 @@ const ItemsList = (props) => {
             imgUrl={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={() => navigation.navigate("DetailScreen")}
+            onPress={() =>
+              navigation.navigate("DetailScreen", { article: item })
+            }
           />
         )}
         keyExtractor={(item, index) => index.toString()}

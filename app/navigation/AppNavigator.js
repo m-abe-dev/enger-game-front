@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Chat from "../ChatScreens/Chat.js";
-import SearchBar from "/Users/m_abe/Desktop/Demo/app/components/SearchBar.js";
+import SearchBar from "../components/SearchBar.js";
 import Item from "../components/Item.js";
 
 // スクリーン実装 //

@@ -1,17 +1,39 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-
+import { useSelector } from "react-redux";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
+import WebView from "react-native-webview";
+import { useDispatch } from "react-redux";
+import { addClip, deleteClip } from "../store/action/user";
 // 案件詳細 //
 
-const DetailScreen = () => {
+const DetailScreen = ({ route }) => {
+  const { article } = route.params;
+
+  const dispatch = useDispatch();
+
   return (
-    <View style={styles.ItemContainer}>
-      <View style={styles.LeftContainer}>
-        <Image style={{ width: 100, height: 100 }} />
-      </View>
-      <View style={styles.RightContainer}>
-        <Text numberOfLines={3}>hello</Text>
-      </View>
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(addClip({ clip: article }));
+        }}
+      >
+        <Text style={{ margin: 10, fontSize: 30 }}>ADD_CLIP</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(deleteClip({ clip: article }));
+        }}
+      >
+        <Text style={{ margin: 10, fontSize: 30 }}>DELETE_CLIP</Text>
+      </TouchableOpacity>
+      <WebView source={{ uri: article.url }} />
     </View>
   );
 };
@@ -19,26 +41,7 @@ const DetailScreen = () => {
 export default DetailScreen;
 
 const styles = StyleSheet.create({
-  ItemContainer: {
-    height: 200,
-    width: "100%",
-    borderColor: "gray",
-    borderWidth: 1,
-    flexDirection: "row",
-  },
-  LeftContainer: {
-    width: 100,
-  },
-  RightContainer: {
+  container: {
     flex: 1,
-    padding: 10,
-    justifyContent: "space-between",
-  },
-  Text: {
-    fontSize: 16,
-  },
-  Subtext: {
-    fontSize: 12,
-    color: "gray",
   },
 });
