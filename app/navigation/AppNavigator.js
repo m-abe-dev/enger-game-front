@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import Chat from "../ChatScreens/Chat.js";
 import SearchBar from "../components/SearchBar.js";
 import Item from "../components/Item.js";
+import Save from "../Save/Save.js";
 
 // スクリーン実装 //
 
@@ -28,8 +29,8 @@ function ItemScreen() {
 
 function SaveScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Save!</Text>
+    <View style={{ flex: 1 }}>
+      <Save />
     </View>
   );
 }
